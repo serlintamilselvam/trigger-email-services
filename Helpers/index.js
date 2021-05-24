@@ -1,9 +1,11 @@
-import mailgun from 'mailgun-js'
+import mailGun from 'mailgun.js'
+import formData from 'form-data'
 import dotenv from 'dotenv'
 
 dotenv.config()
 
-const mainGunApi = mailgun({apiKey: process.env.MAIL_GUN_API_KEY, domain: process.env.MAIL_GUN_DOMAIN})
+const mailgun = new mailGun(formData)
+const mainGunApi = mailgun.client({username: 'api', key: process.env.MAIL_GUN_API_KEY, public_key: process.env.MAILGUN_API_PUBLIC_KEY})
 
 export function initResponse(errorMsg = "invalid_method") {
     return {
@@ -48,7 +50,7 @@ export const fromAddressInEmail = () => {
 
 export const sendSimpleEmail = async (data) => {
     try {
-        await mainGunApi.messages().send(data)
+        await mainGunApi.messages.create(process.env.MAIL_GUN_DOMAIN, data)
         return 1
     } catch(err) {
         return 0

@@ -8,7 +8,7 @@ export const sendInformationEmailToAdmin = async (req,res) => {
 
     const data = {
         from: fromAddressInEmail(),
-        to: req.body.to,
+        to: [req.body.to],
         subject: req.body.subject,
         text: req.body.text
     }
