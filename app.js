@@ -16,7 +16,8 @@ const PORT = process.env.PORT
 const app = express()
 
 const corsOptions = {
-    origin: [process.env.ALLOWED_FRONT_END_URL_1, process.env.ALLOWED_FRONT_END_URL_2, process.env.ALLOWED_FRONT_END_URL_3],
+    origin: [process.env.ALLOWED_FRONT_END_URL_1, process.env.ALLOWED_FRONT_END_URL_2, 
+        process.env.ALLOWED_FRONT_END_URL_3, process.env.ALLOWED_FRONT_END_URL_4],
     optionsSuccessStatus: 200
 }
 
